@@ -1,1 +1,2 @@
-# Book shop front-end
+# Book shop
+Front end project.
