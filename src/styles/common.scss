@@ -1,0 +1,23 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Baloo Bhaina 2', sans-serif;
+  background-color: #F5F6F8;
+}
+
+.container{
+  width: 85vw;
+  margin: 0 auto;
+}
+
+.ajs-message{
+  width: 275px!important;
+  color: #F5F6F8;
+  padding: 10px 0px 10px 15px!important;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.ajs-error{
+  background: rgba(217, 92, 92, 1)!important;
+}

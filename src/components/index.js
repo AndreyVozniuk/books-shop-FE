@@ -1,7 +1,0 @@
-export {default as Header} from './header/Header'
-export {default as Search} from './search/Search'
-export {default as BookList} from './book-list/BookList'
-export {default as Filter} from './filter/Filter'
-export {default as Footer} from './footer/Footer'
-export {default as Loader} from './loader/Loader'
-export {default as ErrorMessage} from './error-message/errorMessage'

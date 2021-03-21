@@ -2,8 +2,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@image/*": ["public/img/*"]
+      "@pages/*": ["src/pages/*"],
+      "@images/*": ["public/img/*"],
+      "@store/*": ["src/store/*"],
+      "@shared/*": ["src/shared/*"],
+      "@appConfig": ["config-app.js"]
     }
   }
 }

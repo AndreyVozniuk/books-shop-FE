@@ -1,0 +1,28 @@
+.wrapper{
+  width: 100.2%;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.content{
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.searchIcon{
+  width: 16%;
+  margin-right: 5px;
+}
+
+.searchInput{
+  width: 85%;
+  height: 30px;
+  border-radius: 7px;
+  border: 2px solid #4e4e4e;
+  font-size: 18px;
+  margin-right: 12px;
+  outline: none;
+  background-color: transparent;
+  padding-left: 7px;
+}

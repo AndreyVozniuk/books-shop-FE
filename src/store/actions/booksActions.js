@@ -1,13 +1,12 @@
 import axios from 'axios'
-import {SET_BOOKS, SET_BOOKS_LOADING, SET_BOOKS_REQUEST_ERROR} from './../types'
-
-const api = 'http://localhost:5002/api'
+import { config } from '@appConfig'
+import { SET_BOOKS, SET_BOOKS_LOADING, SET_BOOKS_REQUEST_ERROR } from './../types'
 
 function asyncQuery(url) {
   return dispatch => {
     dispatch(setLoading(true))
 
-    axios.get(api + url)
+    axios.get(config.API + url)
     .then(res => dispatch( setBooks(res.data) ))
     .catch(err => {
       console.error(err)
