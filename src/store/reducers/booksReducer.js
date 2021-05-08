@@ -1,20 +1,59 @@
-import {SET_BOOKS, SET_BOOKS_LOADING, SET_BOOKS_REQUEST_ERROR} from './../types'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { asyncActionsCreator } from '../reducerHelper'
+import * as api from '@api'
 
-const initialState = {
-  books: [],
-  loading: false,
-  requestError: null
-}
+export const loadBooks = createAsyncThunk('meetings/loadBooks', async () => await api.loadBooks())
+export const searchBooks = createAsyncThunk(
+  'meetings/searchBooks',
+  async (searchData) => await api.searchBooks(searchData.value, searchData.searchOption)
+)
+export const filterBooks = createAsyncThunk(
+  'meetings/filterBooks',
+  async (filterData) => await api.searchBooks(filterData.categories, filterData.price)
+)
 
-export const booksReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_BOOKS: 
-      return {...state, books: action.payload}
-    case SET_BOOKS_LOADING:
-      return {...state, loading: action.payload}
-    case SET_BOOKS_REQUEST_ERROR:
-      return {...state, requestError: action.payload}
-    default:
-      return state
-  }
-}
+export const booksSlice = createSlice({
+  name: 'books',
+  initialState: {
+    books: null,
+  },
+  extraReducers: {
+    ...asyncActionsCreator(
+      loadBooks,
+      'loadBooks',
+      {
+        fulfilled: (state, { payload }) => {
+          state.isLoadBooksLoading = false
+          state.books = payload.books
+        },
+      },
+      { loadingHandler: true },
+    ),
+
+    ...asyncActionsCreator(
+      searchBooks,
+      'searchBooks',
+      {
+        fulfilled: (state, { payload }) => {
+          state.isSearchBooksLoading = false
+          state.books = payload.foundBooks
+        },
+      },
+      { loadingHandler: true },
+    ),
+
+    ...asyncActionsCreator(
+      filterBooks,
+      'filterBooks',
+      {
+        fulfilled: (state, { payload }) => {
+          state.isFilterBooksLoading = false
+          state.books = payload.filteredBooks
+        },
+      },
+      { loadingHandler: true },
+    )
+  },
+})
+
+export default booksSlice.reducer
