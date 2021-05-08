@@ -6,7 +6,8 @@ module.exports = function override(config) {
     '@images': 'public/img',
     '@store': 'src/store',
     '@shared': 'src/shared',
-    '@appConfig': 'config-app.js'
+    '@appConfig': 'config-app.js',
+    '@api': 'src/api'
   })(config)
 
   return config
