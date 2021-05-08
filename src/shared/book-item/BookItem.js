@@ -14,11 +14,11 @@ function selectColor(category) {
   }
 }
 
-export default function BookItem({ title, author, price, category }) {
+export default function BookItem({ title, author, price, category, imageLink }) {
   return <div className={styles.wrapper}>
     <div className={styles.content}>
-      <div className={styles.title} style={{backgroundColor: selectColor(category)}}>
-        <div>{title}</div>
+      <div className={styles.title} style={{backgroundColor: !imageLink && selectColor(category)}}>
+        {!imageLink ? <div>{title}</div> : <img src={imageLink} alt={'book cover'}/>}
       </div>
       <div className={styles.subtitle}>
           <div className={styles.info}><span>Author:</span> <span>{author}</span></div>

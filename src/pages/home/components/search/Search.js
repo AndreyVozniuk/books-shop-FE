@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import alertify from 'alertifyjs'
-import { searchBooks } from '@store/actions/booksActions'
+import { searchBooks } from '@store/reducers/booksReducer'
 import Button from '@shared/button/Button'
 import searchIcon from '@images/icon-search.svg'
 import styles from './Search.module.scss'
@@ -19,7 +19,7 @@ export default function Search() {
       return alertify.notify('Input field is empty 🙁', 'error', 1.5)
     }
 
-    dispatch( searchBooks($input.current.value.trim(), searchBy) )
+    dispatch( searchBooks({value: $input.current.value.trim(), searchOption: searchBy}) )
     $input.current.blur()
   }
 

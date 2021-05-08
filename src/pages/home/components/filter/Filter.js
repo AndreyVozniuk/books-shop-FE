@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import alertify from 'alertifyjs'
+import { filterBooks as filterBooksAction } from '@store/reducers/booksReducer'
 import Button from '@shared/button/Button'
 import FilterItem from './FilterItem'
 import styles from './Filter.module.scss'
@@ -10,6 +12,8 @@ const categories = [
 ]
 
 export default function Filter(){
+  const dispatch = useDispatch()
+
   const [filterByPrice, setFilterByPrice] = useState('')
   const [filterByCategories, setFilterByCategories] = useState('')
 
@@ -18,8 +22,7 @@ export default function Filter(){
       return alertify.notify('Please select filter options 🙂', 'error', 1.5)
     }
 
-    alert('Filter!')
-    console.log('Filter', filterByPrice, filterByCategories)
+    dispatch( filterBooksAction({price: filterByPrice.trim(), categories: filterByCategories.trim()}) )
   }
 
   function categoriesHandler(e) {
