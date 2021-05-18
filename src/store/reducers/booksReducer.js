@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { asyncActionsCreator } from '../reducerHelper'
 import * as api from '@api'
 
-export const loadBooks = createAsyncThunk('meetings/loadBooks', async () => await api.loadBooks())
+export const loadBooks = createAsyncThunk('books/loadBooks', async () => await api.loadBooks())
 export const searchBooks = createAsyncThunk(
-  'meetings/searchBooks',
+  'books/searchBooks',
   async (searchData) => await api.searchBooks(searchData.value, searchData.searchOption)
 )
 export const filterBooks = createAsyncThunk(
-  'meetings/filterBooks',
-  async (filterData) => await api.searchBooks(filterData.categories, filterData.price)
+  'books/filterBooks',
+  async (filterData) => await api.filterBooks(filterData.categories, filterData.price)
 )
 
 export const booksSlice = createSlice({
