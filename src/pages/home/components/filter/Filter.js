@@ -22,7 +22,7 @@ export default function Filter(){
       return alertify.notify('Please select filter options 🙂', 'error', 1.5)
     }
 
-    dispatch( filterBooksAction({price: filterByPrice.trim(), categories: filterByCategories.trim()}) )
+    dispatch( filterBooksAction({price: filterByPrice.trim(), categories: filterByCategories.trim().replace('_', '')}) )
   }
 
   function categoriesHandler(e) {
